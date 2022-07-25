@@ -14,7 +14,7 @@ function getFeaturedUpdates() {
             action: {
                 type: 'button',
                 url: 'https://invoicetor.works',
-                text: 'Learn more'
+                text: 'Explore Themes 😍'
             }
         },
         {
