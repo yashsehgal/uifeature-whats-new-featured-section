@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import ReactModal from "react-modal";
 import DirectLinksWrapper from "./DirectLinksWrapper";
 import { getFeaturedUpdates } from "./featured-updates";
-import { FaTimes } from 'react-icons/fa';
+import { FaArrowRight, FaTimes } from 'react-icons/fa';
 
 ReactModal.setAppElement('#root');
 
@@ -33,11 +33,15 @@ export default function WhatsNewFeatured() {
                         return <React.Fragment></React.Fragment>
                     })}
                 </div>
-                <button className="leading-snug text-xs font-semibold text-zinc-400 hover:text-zinc-300"
+                <button className="leading-snug text-xs font-semibold text-zinc-400 hover:text-zinc-300
+                    flex flex-row items-center justify-center gap-2
+                "
                     onClick={() => setMoreFeaturedContentPopup(!moreFeaturedContentPopup)}
                 >
-                    More Updates
+                    {"More Updates"}
+                    <FaArrowRight />
                 </button>
+                <hr className="mt-2 border-zinc-800" />
                 <DirectLinksWrapper />
             </div>
             <ReactModal isOpen={moreFeaturedContentPopup}
