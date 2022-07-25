@@ -9,7 +9,7 @@ function getFeaturedUpdates() {
         },
         {
             title: 'New Themes are now available',
-            description: "Funding alert! Recently we have raised $60M of funding from Tesla, Inc.",
+            description: "30+ more themes are now available now for business users. Explore more themes from the template marketplace",
             hasAction: true,
             action: {
                 type: 'button',
@@ -35,7 +35,7 @@ function getFeaturedUpdates() {
         },
         {
             title: 'New Themes are now available',
-            description: "Funding alert! Recently we have raised $60M of funding from Tesla, Inc.",
+            description: "30+ more themes are now available now for business users. Explore more themes from the template marketplace",
             hasAction: true,
             action: {
                 type: 'button',

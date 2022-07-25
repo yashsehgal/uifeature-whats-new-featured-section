@@ -1,10 +1,13 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import ReactModal from "react-modal";
 import { getFeaturedUpdates } from "./featured-updates";
+
+ReactModal.setAppElement('#root');
 
 export default function WhatsNewFeatured() {
     const featuredUpdatesContentRef = useRef(getFeaturedUpdates());
-    // const featuringContentLength = featuredUpdatesContentRef.current?.length;
+    const [moreFeaturedContentPopup, setMoreFeaturedContentPopup] = useState(true);
     return (
         <React.Fragment>
             <div className="whats-new-featured-container w-[240px] h-fit px-3 py-2 border-l border-zinc-700">
@@ -28,8 +31,56 @@ export default function WhatsNewFeatured() {
                         return <React.Fragment></React.Fragment>
                     })}
                 </div>
-                <button className="leading-snug text-xs font-semibold text-zinc-400 hover:text-zinc-300">More Updates</button>
+                <button className="leading-snug text-xs font-semibold text-zinc-400 hover:text-zinc-300"
+                    onClick={() => setMoreFeaturedContentPopup(!moreFeaturedContentPopup)}
+                >
+                    More Updates
+                </button>
             </div>
+            <ReactModal isOpen={moreFeaturedContentPopup}
+                onRequestClose={() => setMoreFeaturedContentPopup(!moreFeaturedContentPopup)}
+                style={{
+                    overlay: {
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'rgba(0, 0, 0, 0.700)',
+                        filter: 'blur(80%)'
+                    },
+                    content: {
+                        background: '#121212',
+                        borderColor: 'transparent',
+                        boxShadow: '0px 0px 6px rgba(0, 0, 0, 0.360)',
+                        width: '560px',
+                        height: 'fit-content',
+                        // centering content
+                        marginRight: 'auto',
+                        marginLeft: 'auto',
+                        marginBottom: 'auto',
+                        marginTop: 'auto',
+                        // removing default padding from modal
+                        padding: '16px 24px'
+                    }
+                }}
+            >
+                <div className="flex flex-col items-start justify-start gap-1 w-full h-fit">
+                    <h1 className="leading-snug font-semibold text-zinc-500">What's New? Featured Updates</h1>
+                    <p className="leading-snug font-normal text-zinc-600 text-xs">Latest {" "}
+                        <span className="hover:text-zinc-400 hover:underline">
+                            version {"(0.1.9)"}
+                        </span>
+                    </p>
+                </div>
+                <div className="featured-updates-section-wrapper mt-4 flex flex-col mb-6 overflow-y-scroll pr-3 overflow-x-hidden h-[280px] items-start justify-start gap-2 divide-y divide-zinc-800">
+                    {featuredUpdatesContentRef.current?.map((featuredContent, featuredContentIndex) => {
+                        return (
+                            <FeaturedContentWrapper key={featuredContentIndex}
+                                content={featuredContent}
+                            />
+                        )
+                    })}
+                </div>
+            </ReactModal>
         </React.Fragment>
     )
 }
