@@ -7,7 +7,7 @@ ReactModal.setAppElement('#root');
 
 export default function WhatsNewFeatured() {
     const featuredUpdatesContentRef = useRef(getFeaturedUpdates());
-    const [moreFeaturedContentPopup, setMoreFeaturedContentPopup] = useState(true);
+    const [moreFeaturedContentPopup, setMoreFeaturedContentPopup] = useState(false);
     return (
         <React.Fragment>
             <div className="whats-new-featured-container w-[240px] h-fit px-3 py-2 border-l border-zinc-700">
