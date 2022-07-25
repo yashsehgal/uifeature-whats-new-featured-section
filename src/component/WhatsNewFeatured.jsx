@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef, useState } from "react";
 import ReactModal from "react-modal";
+import DirectLinksWrapper from "./DirectLinksWrapper";
 import { getFeaturedUpdates } from "./featured-updates";
 
 ReactModal.setAppElement('#root');
@@ -36,6 +37,7 @@ export default function WhatsNewFeatured() {
                 >
                     More Updates
                 </button>
+                <DirectLinksWrapper />
             </div>
             <ReactModal isOpen={moreFeaturedContentPopup}
                 onRequestClose={() => setMoreFeaturedContentPopup(!moreFeaturedContentPopup)}
