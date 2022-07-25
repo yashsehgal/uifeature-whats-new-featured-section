@@ -4,6 +4,7 @@ import { getFeaturedUpdates } from "./featured-updates";
 
 export default function WhatsNewFeatured() {
     const featuredUpdatesContentRef = useRef(getFeaturedUpdates());
+    // const featuringContentLength = featuredUpdatesContentRef.current?.length;
     return (
         <React.Fragment>
             <div className="whats-new-featured-container w-[240px] h-fit px-3 py-2 border-l border-zinc-700">
@@ -17,13 +18,17 @@ export default function WhatsNewFeatured() {
                 </div>
                 <div className="featured-updates-section-wrapper mt-4 flex flex-col items-start justify-start gap-2 divide-y divide-zinc-800">
                     {featuredUpdatesContentRef.current?.map((featuredContent, featuredContentIndex) => {
-                        return (
-                            <FeaturedContentWrapper key={featuredContentIndex}
-                                content={featuredContent}
-                            />
-                        )
+                        if (featuredContentIndex < 3) {
+                            return (
+                                <FeaturedContentWrapper key={featuredContentIndex}
+                                    content={featuredContent}
+                                />
+                            )
+                        }
+                        return <React.Fragment></React.Fragment>
                     })}
                 </div>
+                <button className="leading-snug text-xs font-semibold text-zinc-400 hover:text-zinc-300">More Updates</button>
             </div>
         </React.Fragment>
     )
